@@ -463,10 +463,7 @@ makeNodePSOCK <- function(worker = "localhost", master = NULL, port, connectTime
     if (localMachine || revtunnel) {
       master <- "localhost"
     } else {
-        ## Check for user having set master.
-        master <- getOption("future.makeNodePSOCK.master", Sys.getenv("R_FUTURE_MAKENODEPSOCK_MASTER"))
-        if (identical(master, ""))
-            master <- Sys.info()[["nodename"]]
+      master <- Sys.info()[["nodename"]]
     }
   }
   stop_if_not(!is.null(master))
